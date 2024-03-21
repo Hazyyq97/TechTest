@@ -4,7 +4,7 @@ namespace TechnicalTest.Service
 {
     public class NumberToWordsService : INumberToWordsService
     {
-        public async Task<string> ConvertNumberToWordsAsync(double number)
+        public async Task<string?> ConvertNumberToWordsAsync(double number)
         {
             try
             {
@@ -18,14 +18,14 @@ namespace TechnicalTest.Service
             }
         }
 
-        private static string[] firstDigit = 
+        private static readonly string[] firstDigit = 
         { 
             "Zero", "One", "Two", "Three", "Four", "Five",
             "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
             "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
             "Seventeen", "Eighteen", "Nineteen" 
         };
-        private static string[] secondDigit = 
+        private static readonly string[] secondDigit = 
         { 
             "", "", "Twenty", "Thirty", "Forty", "Fifty",
             "Sixty", "Seventy", "Eighty", "Ninety" 
@@ -61,7 +61,6 @@ namespace TechnicalTest.Service
             }
             if (i < 100)
             {
-                var test = GetWords(i % 10);
                 return secondDigit[i / 10] + ((i % 10 > 0) ? " " + GetWords(i % 10) : "");
             }
             if (i < 1000)
